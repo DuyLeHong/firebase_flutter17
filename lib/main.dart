@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_flutter17/AddUser.dart';
+import 'package:firebase_flutter17/GetUserName.dart';
 import 'package:firebase_flutter17/UserInformation.dart';
 import 'package:flutter/material.dart';
 
@@ -120,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 print('Sign in successfully - UserCredential ${userCredential.user?.email}');
 
                 Navigator.push(context, MaterialPageRoute(builder: (_context) {
-                  return UserInformation();
+                  return GetUserName('5z7h6jsr7nbDAmAW8xTB');
                 }));
 
               } on FirebaseAuthException catch (e) {
