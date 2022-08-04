@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_flutter17/AddUser.dart';
 import 'package:flutter/material.dart';
 
 import 'firebase_options.dart';
@@ -111,11 +112,16 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(onPressed: () async {
               try {
                 UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-                    email: "codefresher112@example.com",
+                    email: "codefresher111@example.com",
                     password: "SuperSecretPassword!"
                 );
 
                 print('Sign in successfully - UserCredential ${userCredential.user?.email}');
+
+                Navigator.push(context, MaterialPageRoute(builder: (_context) {
+                  return AddUser('Tran Tuan Anh', 'CodeFresher', 25);
+                }));
+
               } on FirebaseAuthException catch (e) {
                 if (e.code == 'user-not-found') {
                   print('No user found for that email.');
@@ -123,7 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   print('Wrong password provided for that user.');
                 }
               }
-            }, child: Text('Sign in')),
+            }, child: Text('Log in')),
           ],
         ),
       ),
