@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_flutter17/AddUser.dart';
+import 'package:firebase_flutter17/UserInformation.dart';
 import 'package:flutter/material.dart';
 
 import 'firebase_options.dart';
@@ -119,7 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 print('Sign in successfully - UserCredential ${userCredential.user?.email}');
 
                 Navigator.push(context, MaterialPageRoute(builder: (_context) {
-                  return AddUser('Tran Tuan Anh', 'CodeFresher', 25);
+                  return UserInformation();
                 }));
 
               } on FirebaseAuthException catch (e) {
