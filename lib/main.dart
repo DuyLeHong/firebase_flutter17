@@ -118,6 +118,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     password: "SuperSecretPassword!"
                 );
 
+                //String? _userID = await userCredential.user?.getIdToken();
+
                 print('Sign in successfully - UserCredential ${userCredential.user?.email}');
 
                 Navigator.push(context, MaterialPageRoute(builder: (_context) {
