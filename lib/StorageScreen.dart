@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:path_provider/path_provider.dart';
@@ -17,6 +18,13 @@ class _StorageScreenState extends State<StorageScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    User? firebaseUser =  FirebaseAuth.instance.currentUser;
+
+    String? email = firebaseUser?.email;
+
+    print('Email: $email');
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Storage Screen'),

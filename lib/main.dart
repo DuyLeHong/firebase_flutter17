@@ -123,7 +123,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     password: "SuperSecretPassword!"
                 );
 
-                //FirebaseAuth.instance.currentUser?.uid;
+
 
                 String? _userID = await userCredential.user?.uid;
                 // YDRwGEXmr9gnWjsATiOSN3ZuwuC2
