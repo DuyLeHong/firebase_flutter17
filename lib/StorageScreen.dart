@@ -28,7 +28,7 @@ class _StorageScreenState extends State<StorageScreen> {
             children: [
               ElevatedButton(
                 onPressed: () async {
-                  final imageRef = storageRef.child("flutter17/anh/Banner-KHLT-Android.png");
+                  final imageRef = storageRef.child("flutter17/buoi15/banner_2022_flutter.jpg");
 
                   _downloadImageUrl = await imageRef.getDownloadURL();
 

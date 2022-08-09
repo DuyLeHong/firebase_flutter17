@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_flutter17/AddUser.dart';
 import 'package:firebase_flutter17/GetUserName.dart';
 import 'package:firebase_flutter17/StorageScreen.dart';
@@ -97,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(onPressed: () async {
               try {
                 UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-                    email: "codefresher111@example.com",
+                    email: "codefresher112@example.com",
                     password: "SuperSecretPassword!"
                 );
 
@@ -113,13 +114,20 @@ class _MyHomePageState extends State<MyHomePage> {
               }
             }, child: Text('Register')),
             ElevatedButton(onPressed: () async {
+
+
+
               try {
                 UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-                    email: "codefresher111@example.com",
+                    email: "codefresher112@example.com",
                     password: "SuperSecretPassword!"
                 );
 
-                //String? _userID = await userCredential.user?.getIdToken();
+                //FirebaseAuth.instance.currentUser?.uid;
+
+                String? _userID = await userCredential.user?.uid;
+                // YDRwGEXmr9gnWjsATiOSN3ZuwuC2
+                print('UID: $_userID');
 
                 print('Sign in successfully - UserCredential ${userCredential.user?.email}');
 
@@ -133,6 +141,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 } else if (e.code == 'wrong-password') {
                   print('Wrong password provided for that user.');
                 }
+
+                await FirebaseCrashlytics.instance.recordError(
+                    'error',
+                    null,
+                    reason: 'a fatal error',
+                    // Pass in 'fatal' argument
+                    fatal: true
+                );
               }
             }, child: Text('Log in')),
           ],
